@@ -31,14 +31,14 @@ stage "Running container"
                 //
 
 waitUntil {
- sh "docker exec  -t ${container_name} netstat -apn | grep 80 | grep LISTEN | wc -l | tr -d '\n' > /var/lib/jenkins/wait_results"
- wait_results = readFile '/var/lib/jenkins/wait_results '
+ sh "docker exec  -t ${container_name} netstat -apn | grep 80 | grep LISTEN | wc -l | tr -d '\n' > /var/lib/jenkins/users/bj/wait_results"
+ wait_results = readFile '/var/lib/jenkins/users/bj/wait_results '
 
  echo "Wait Results(${wait_results})"
  if ("${wait_results}" == "1")
  {
  echo "Apache is listening on port 80"
- sh "rm -f /var/lib/jenkins/wait_results"
+ sh "rm -f /var/lib/jenkins/users/bj/wait_results"
  return true
 }
  else
