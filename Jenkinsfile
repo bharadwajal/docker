@@ -35,7 +35,7 @@ stage "Running container"
              sh "sudo apt-get  update"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
-             sh "sudo apt-get install -y netstat"
+             
              sh "exit"
 
 
