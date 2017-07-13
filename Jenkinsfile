@@ -33,8 +33,8 @@ stage "Running container"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
              sh "sudo apt-get install -y vim"
-             sh "docker exec  -t ${container_name} sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/wait_results"
- wait_results = readFile ' /var/lib/jenkins/users/bj/wait_results '
+             sh "sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
+ apache_result = readFile ' /var/lib/jenkins/users/bj/apache_result '
             
 
 
