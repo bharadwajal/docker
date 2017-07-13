@@ -24,7 +24,7 @@ echo "Building docker.build(${maintainer_name}/${container_name}:${build_tag})"
 stage "Running container"
 
  // Run the container with the env file, mounted volumes and the ports:
-            docker.image("${maintainer_name}/${container_name}:${build_tag}").withRun("--name=${container_name}")  
+            docker.image("${maintainer_name}/${container_name}:${build_tag}").withRun("--name=${container_name}")  { c ->
   
   sh "./test.sh"
                 
@@ -41,4 +41,5 @@ stage "Running container"
 echo "Docker Container is running"
             
  }
+}
 }
