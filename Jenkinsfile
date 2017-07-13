@@ -25,12 +25,9 @@ stage "Running container"
 
  // Run the container with the env file, mounted volumes and the ports:
             docker.image("${maintainer_name}/${container_name}:${build_tag}").withRun("--name=${container_name}")  { c ->
-                // wait for the apache server to be ready for testing
-                // the 'waitUntil' block needs to return true to stop waiting
-                // in the future this will be handy to specify waiting for a max interval:
-                //
+                
 
- sh "docker exec  -i  ${container_name} /bin/bash"
+ 
              
              sh "sudo apt-get  update"
              sh "sudo apt-get -qq update"
