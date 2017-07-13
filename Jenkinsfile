@@ -42,7 +42,7 @@ stage "Running container"
               {
                echo "not running"
               }
-               fi
+               
 
              
  // At this point apache is running
