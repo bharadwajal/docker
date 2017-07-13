@@ -36,7 +36,8 @@ stage "Running container"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
              sh "sudo apt-get install -y vim"
-             
+             sh "docker exec  -t ${container_name} sudo lsof -Pi :80 -sTCP:LISTEN -t > /home/ubuntu/result"
+ wait_results = readFile '/home/ubuntu/result '
              sh "exit"
 
 
