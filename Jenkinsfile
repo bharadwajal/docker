@@ -41,3 +41,4 @@ stage "Running container"
 echo "Docker Container is running"
             
  }
+}
