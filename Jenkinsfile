@@ -35,7 +35,7 @@ waitUntil {
  wait_results = readFile '/var/lib/jenkins/users/bj/wait_results '
 
  echo "Wait Results(${wait_results})"
- if ("${wait_results}" == "1")
+ if ("${wait_results}" == "0")
  {
  echo "Apache is listening on port 80"
  sh "rm -f /var/lib/jenkins/users/bj/wait_results"
