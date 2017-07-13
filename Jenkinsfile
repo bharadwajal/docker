@@ -33,8 +33,8 @@ stage "Running container"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
              sh "docker exec  -t ${container_name} sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
-             
-             if ("cat /var/lib/jenkins/users/bj/apache_result" == "1") 
+             r = sh "cat /var/lib/jenkins/users/bj/apache_result"
+             if ("${r}" == "1") 
              {
               echo "running"
              }
