@@ -34,7 +34,7 @@ stage "Running container"
              sh "sudo apt-get install -y lsof"
              sh "sudo apt-get install -y vim"
              sh "sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
- apache_result = readFile ' /var/lib/jenkins/users/bj/apache_result '
+             sh "cat /var/lib/jenkins/users/bj/apache_result"
             
 
 
