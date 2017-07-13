@@ -35,11 +35,15 @@ stage "Running container"
              sh "sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
              
              apache_result = readFile '/var/lib/jenkins/users/bj/apache_result '
-             if ("${apache_result}" == "1") ; then
-                echo "running"
-             else
-                echo "not running"
-             fi
+             if ("${apache_result}" == "1") 
+             {
+              echo "running"
+             }
+              else
+              {
+               echo "not running"
+              }
+               fi
 
              
  // At this point apache is running
