@@ -32,10 +32,9 @@ stage "Running container"
              sh "sudo apt-get  update"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
-             sh "sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
-             
-             apache_result = readFile '/var/lib/jenkins/users/bj/apache_result '
-             if ("${apache_result}" == "1") 
+             sh "docker exec  -t ${container_name} sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
+             r = sh "cat /var/lib/jenkins/users/bj/apache_result"
+             if ("${r}" == "1") 
              {
               echo "running"
              }
@@ -43,7 +42,7 @@ stage "Running container"
               {
                echo "not running"
               }
-               fi
+               
 
              
  // At this point apache is running
