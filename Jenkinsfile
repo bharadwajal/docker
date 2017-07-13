@@ -40,6 +40,4 @@ stage "Running container"
  // At this point apache is running
 echo "Docker Container is running"
             
-            }
  }
-}
