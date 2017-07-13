@@ -51,3 +51,5 @@ echo "Apache is not listening on port 80 yet"
  // At this point apache is running
 echo "Docker Container is running"
             
+            }
+ }
