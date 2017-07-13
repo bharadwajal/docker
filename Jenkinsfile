@@ -18,7 +18,7 @@ stage 'Building Container for Docker Hub'
  stage "Building"
 echo "Building docker.build(${maintainer_name}/${container_name}:${build_tag})"
  container = docker.build("${maintainer_name}/${container_name}:${build_tag}")
- try {
+
 
  // Start Testing
 stage "Running container"
