@@ -7,10 +7,10 @@ r=`cat /var/lib/jenkins/users/bj/wait_results`
 if [ $r == "1" ]
 then  
  {
-        echo "running"
+        echo "apache is running on PORT 80"
   }
 else
    {
-     echo "not running"
+     echo "apache is not running"
    }   
 fi
