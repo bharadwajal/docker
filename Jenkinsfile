@@ -32,10 +32,10 @@ stage "Running container"
 
  sh "docker exec  -i  ${container_name} /bin/bash"
              
-             sh "apt-get -y update"
-             sh "apt-get -qq update"
-             sh "apt-get install lsof"
-             sh "apt-get install netstat"
+             sh "sudo apt-get  update"
+             sh "sudo apt-get -qq update"
+             sh "sudo apt-get install -y lsof"
+             sh "sudo apt-get install -y netstat"
              sh "exit"
 
 
