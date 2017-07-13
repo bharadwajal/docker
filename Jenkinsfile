@@ -30,7 +30,7 @@ stage "Running container"
                 // in the future this will be handy to specify waiting for a max interval:
                 //
 
- sh "docker exec  -i -t ${container_name} /bin/bash"
+ sh "docker exec  -i  ${container_name} /bin/bash"
              sh "exit"
 
 
