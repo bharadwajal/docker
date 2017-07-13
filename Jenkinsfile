@@ -32,16 +32,16 @@ stage "Running container"
              sh "sudo apt-get  update"
              sh "sudo apt-get -qq update"
              sh "sudo apt-get install -y lsof"
-             sh "sudo apt-get install -y vim"
              sh "sudo lsof -Pi :80 -sTCP:LISTEN -t > /var/lib/jenkins/users/bj/apache_result"
-             sh "cat /var/lib/jenkins/users/bj/apache_result"
-            
+             
+             apache_result = readFile '/var/lib/jenkins/users/bj/apache_result '
+             if ("${apache_result}" == "1") ; then
+                echo "running"
+             else
+                echo "not running"
+             fi
 
-
-
-
-  // end of waitUntil
-
+             
  // At this point apache is running
 echo "Docker Container is running"
             
