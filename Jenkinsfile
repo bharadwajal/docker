@@ -30,22 +30,11 @@ stage "Running container"
                 // in the future this will be handy to specify waiting for a max interval:
                 //
 
- sh "docker exec  -i -t ${container_name} netstat -apn | grep 80 | grep LISTEN | wc -l  > /var/lib/jenkins/users/bj/wait_results"
+ sh "docker exec  -i -t ${container_name}
 
-wait_results = readFile '/var/lib/jenkins/users/bj/wait_results '
 
-echo "Wait Results(${wait_results})"
- if ("${wait_results}" == "0")
- {
- echo "Apache is listening on port 80"
- sh "rm -f /var/lib/jenkins/users/bj/wait_results"
- return true
-}
- else
- {
-echo "Apache is not listening on port 80 yet"
- return false
- }
+
+
   // end of waitUntil
 
  // At this point apache is running
