@@ -30,7 +30,7 @@ stage "Running container"
                 // in the future this will be handy to specify waiting for a max interval:
                 //
 
- sh "docker exec  -t ${container_name} netstat -apn | grep 80 | grep LISTEN | wc -l  > /var/lib/jenkins/users/bj/wait_results"
+ sh "docker exec  -i -t ${container_name} netstat -apn | grep 80 | grep LISTEN | wc -l  > /var/lib/jenkins/users/bj/wait_results"
 
 wait_results = readFile '/var/lib/jenkins/users/bj/wait_results '
 
