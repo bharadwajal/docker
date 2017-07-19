@@ -61,39 +61,61 @@ stages {
   }
     
     
-    // psuedocode for integration tests
+  // psuedocode for integration tests
     
-    // this test uses the Foo container
-    stage "Integration Test 1 - Foo test"
+  // this test uses the Foo container
+  stage ("Integration Test 1 - Foo test") {
     when {
       expression {
-         triggerWasFooBuild || triggerWasGithub 
-      }
-      steps {
-        step {
-          // TODO determine image ids based on logic and triggers for local image and Foo image
-          // TODO Launch images
-          // TODO Run int test
-          // TODO Stop images
-          echo "Nothing to do yet, but I'll do a lot in the future!"
-        }
-      }
+        triggerWasFooBuild || triggerWasGithub 
+     }
     }
-     // this test uses the Foo container
-    stage "Integration Test 2 - Bar test"
-    when {
-      expression {
-         triggerWasBarBuild || triggerWasGithub 
-      }
-      steps {
-        step {
-          // TODO determine image ids based on logic and triggers for local image and Foo image
-          // TODO Launch images
-          // TODO Run int test
-          // TODO Stop images
-          echo "Nothing to do yet, but I'll do a lot in the future!"
-        }
+    node {
+     steps {
+       step {
+         // TODO determine image ids based on logic and triggers for local image and Foo image
+         // TODO Launch images
+         // TODO Run int test
+         // TODO Stop images
+         echo "Nothing to do yet, but I'll do a lot in the future!"
+       }
       }
     }
   }
+  // this test uses the Foo container
+  stage ("Integration Test 2 - Bar test") {
+    when {
+      expression {
+        triggerWasBarBuild || triggerWasGithub 
+      }
+    }
+    node {
+      steps {
+        step {
+          // TODO determine image ids based on logic and triggers for local image and Foo image
+          // TODO Launch images
+          // TODO Run int test
+          // TODO Stop images
+          echo "Nothing to do yet, but I'll do a lot in the future!"
+        } 
+      }
+    }
+  }
+  stage ("Run external Integration tests") {
+    when {
+      expression {
+        triggerWasGithub 
+      }
+    }
+    // TODO ... pass the correct parameters, eg this build's name, tag for new image, etc
+    build job: 'TestingJob', parameters [string(name: 'GIT_BRANCH_NAME', value: GIT_BRANCH)]
+  }
+  stage ("Tag and publish to docker-develop") {
+     when {
+      expression {
+        triggerWasGithub 
+      }
+    // TODO ... steps to publish and/or promote    
+  }    
+      
 }
